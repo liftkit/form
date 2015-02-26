@@ -6,7 +6,7 @@
 	use LiftKit\Form\FieldSet\FieldSet;
 
 
-	class Base extends FieldSet
+	class Form extends FieldSet
 	{
 		protected $rules = array();
 

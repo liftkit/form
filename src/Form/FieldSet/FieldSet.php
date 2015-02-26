@@ -29,29 +29,6 @@
 		}
 
 
-		public function execute (Input & $input)
-		{
-			$this->submit($input);
-			$this->validate($input);
-
-			foreach ($this->elements as $element) {
-				$element->execute($input);
-			}
-		}
-
-
-		public function submit (Input & $input)
-		{
-			// no action
-		}
-
-
-		public function validate (Input & $input)
-		{
-			// no action
-		}
-
-
 		public function createField (View $view = null)
 		{
 			return new Field($view);
@@ -100,38 +77,6 @@
 		}
 
 
-		public function clearElements ()
-		{
-			$this->elements = array();
-
-			return $this;
-		}
-
-
-		public function getFields ()
-		{
-			$flattened = array();
-
-			foreach ($this->getElements() as $key => $element) {
-				if ($element instanceof Fieldset) {
-					$flattened = array_merge($flattened, $element->getFields());
-				} else if ($element instanceof Field) {
-					$flattened[$key] = $element;
-				}
-			}
-
-			return $flattened;
-		}
-
-
-		public function getField ($name)
-		{
-			$fields = $this->getFields();
-
-			return $fields[$name];
-		}
-
-
 		public function getElement ($name)
 		{
 			return $this->elements[$name];
@@ -175,5 +120,36 @@
 			unset($this->elements[$name]);
 
 			return $this;
+		}
+
+
+		public function clearElements ()
+		{
+			$this->elements = array();
+
+			return $this;
+		}
+
+
+		public function execute (Input & $input)
+		{
+			$this->submit($input);
+			$this->validate($input);
+
+			foreach ($this->elements as $element) {
+				$element->execute($input);
+			}
+		}
+
+
+		public function submit (Input & $input)
+		{
+			// no action
+		}
+
+
+		public function validate (Input & $input)
+		{
+			// no action
 		}
 	}

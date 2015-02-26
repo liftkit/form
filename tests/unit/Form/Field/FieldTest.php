@@ -62,34 +62,6 @@
 		}
 
 
-		public function testSetAttribute ()
-		{
-			$this->field->setAttribute('test', 1);
-
-			$this->assertEquals(
-				$this->field->getAttribute('test'),
-				1
-			);
-
-			$this->assertEquals(
-				$this->field->getAttributes(),
-				array('test' => 1)
-			);
-		}
-
-
-		public function testGetAttributesString ()
-		{
-			$this->field->setAttribute('test', 1);
-			$this->field->setAttribute('another', '1&2');
-
-			$this->assertEquals(
-				trim($this->field->getAttributesString()),
-				'test="1" another="1&amp;2"'
-			);
-		}
-
-
 		public function testValidatorPasses ()
 		{
 			$ruleset = new RuleSet;
