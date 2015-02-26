@@ -18,30 +18,11 @@
 		}
 	},
 	"require": {
-		"liftkit/collection": "dev-master",
-		"liftkit/input": "dev-master",
+		"liftkit/input": "1.0.*",
 		"liftkit/core": "dev-master",
-		"liftkit/dependency-injection": "dev-master"
+		"liftkit/dependency-injection": "1.0.*"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "4.5.*"
-	},
-	"repositories": [
-		{
-			"type": "git",
-			"url": "https://github.com/liftkit/collection"
-		},
-		{
-			"type": "git",
-			"url": "https://github.com/liftkit/input"
-		},
-		{
-			"type": "git",
-			"url": "https://github.com/liftkit/dependency-injection"
-		},
-		{
-			"type": "git",
-			"url": "https://github.com/liftkit/core"
-		}
-	]
+	}
 }
