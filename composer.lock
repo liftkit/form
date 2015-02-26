@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "018b43efe7513717a529c9eba44e2671",
+    "hash": "0ef60c386d0e4ad7cda62da36bd0590d",
     "packages": [
         {
             "name": "liftkit/collection",
@@ -50,17 +50,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/liftkit/core.git",
-                "reference": "a31959578d173cf359d6fe4abe1904483a733b6f"
+                "reference": "67c43ec1de93c7b97d1027351b2431f3b772cab4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liftkit/core/zipball/a31959578d173cf359d6fe4abe1904483a733b6f",
-                "reference": "a31959578d173cf359d6fe4abe1904483a733b6f",
+                "url": "https://api.github.com/repos/liftkit/core/zipball/67c43ec1de93c7b97d1027351b2431f3b772cab4",
+                "reference": "67c43ec1de93c7b97d1027351b2431f3b772cab4",
                 "shasum": ""
             },
             "require": {
-                "liftkit/dependency-injection": "1.0.*",
-                "liftkit/input": "1.0.*"
+                "liftkit/collection": "1.*",
+                "liftkit/dependency-injection": "1.*",
+                "liftkit/input": "1.*"
             },
             "require-dev": {
                 "phpunit/phpunit": "4.5.*"
@@ -86,20 +87,20 @@
                 }
             ],
             "description": "LiftKit Core Libraries",
-            "time": "2015-02-26 15:44:50"
+            "time": "2015-02-26 18:46:30"
         },
         {
             "name": "liftkit/dependency-injection",
-            "version": "v1.0",
+            "version": "v1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/liftkit/dependency-injection.git",
-                "reference": "622c9e7080edc30e7fd76b6efd611d6f1c557490"
+                "reference": "f9e9752a99f2f59653c6fd39f6e657e2e3a23d72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liftkit/dependency-injection/zipball/622c9e7080edc30e7fd76b6efd611d6f1c557490",
-                "reference": "622c9e7080edc30e7fd76b6efd611d6f1c557490",
+                "url": "https://api.github.com/repos/liftkit/dependency-injection/zipball/f9e9752a99f2f59653c6fd39f6e657e2e3a23d72",
+                "reference": "f9e9752a99f2f59653c6fd39f6e657e2e3a23d72",
                 "shasum": ""
             },
             "require-dev": {
@@ -126,7 +127,7 @@
                 }
             ],
             "description": "Dependency injection library for LiftKit",
-            "time": "2015-02-24 00:38:43"
+            "time": "2015-02-26 18:38:14"
         },
         {
             "name": "liftkit/input",
