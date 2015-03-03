@@ -19,7 +19,7 @@
 	},
 	"require": {
 		"liftkit/input": "1.*",
-		"liftkit/core": "dev-master",
+		"liftkit/core": ">=0.2 <1.0",
 		"liftkit/dependency-injection": "1.*"
 	},
 	"require-dev": {
