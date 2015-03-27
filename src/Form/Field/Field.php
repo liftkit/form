@@ -115,4 +115,10 @@
 
 			return $this;
 		}
+
+
+		public function getValidator ()
+		{
+			return $this->validator;
+		}
 	}

@@ -64,11 +64,11 @@
 
 		public function testValidatorPasses ()
 		{
-			$ruleset = new RuleSet;
-			$ruleset->setRule('required', $this->createRequiredRule());
+			$ruleSet = new RuleSet;
+			$ruleSet->setRule('required', $this->createRequiredRule());
 
 			$validator = new Validator(
-				$ruleset,
+				$ruleSet,
 				'required',
 				'required field'
 			);
@@ -87,11 +87,11 @@
 		 */
 		public function testValidatorFails ()
 		{
-			$ruleset = new RuleSet;
-			$ruleset->setRule('required', $this->createRequiredRule());
+			$ruleSet = new RuleSet;
+			$ruleSet->setRule('required', $this->createRequiredRule());
 
 			$validator = new Validator(
-				$ruleset,
+				$ruleSet,
 				'required',
 				'required field'
 			);
@@ -102,6 +102,26 @@
 			$this->field->setValue($value);
 
 			$this->field->validate();
+		}
+
+
+		public function testSetGetValidator ()
+		{
+			$ruleSet = new RuleSet;
+			$ruleSet->setRule('required', $this->createRequiredRule());
+
+			$validator = new Validator(
+				$ruleSet,
+				'required',
+				'required field'
+			);
+
+			$this->field->setValidator($validator);
+
+			$this->assertSame(
+				$validator,
+				$this->field->getValidator()
+			);
 		}
 
 

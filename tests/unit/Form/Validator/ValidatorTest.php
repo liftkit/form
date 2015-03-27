@@ -44,6 +44,39 @@
 		}
 
 
+		public function testEmptyRule ()
+		{
+			$validator = new Validator(
+				$this->ruleset,
+				'',
+				'required field'
+			);
+
+			$value = '';
+
+			$validator->validate($value);
+		}
+
+
+		/**
+		 * @expectedException \LiftKit\Form\Validator\Rule\Exception\Validation
+		 */
+		public function testAddRule ()
+		{
+			$validator = new Validator(
+				$this->ruleset,
+				'',
+				'required field'
+			);
+
+			$validator->addRule('required');
+
+			$value = '';
+
+			$validator->validate($value);
+		}
+
+
 		/**
 		 * @expectedException \LiftKit\Form\Validator\Rule\Exception\Validation
 		 */

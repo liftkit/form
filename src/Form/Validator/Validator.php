@@ -74,6 +74,16 @@
 		}
 
 
+		public function addRule ($ruleString)
+		{
+			if ($this->ruleString) {
+				$this->ruleString .= self::PIPE . $ruleString;
+			} else {
+				$this->ruleString = $ruleString;
+			}
+		}
+
+
 		public function validate (& $value)
 		{
 			$parsedRules = $this->parseRules();
@@ -132,10 +142,12 @@
 					$args[] = $this->replacePlaceholders($arg);
 				}
 
-				$parsedRules[] = array(
-					'name' => $method,
-					'arguments' => $args,
-				);
+				if ($method) {
+					$parsedRules[] = array(
+						'name' => $method,
+						'arguments' => $args,
+					);
+				}
 			}
 
 			return $parsedRules;
