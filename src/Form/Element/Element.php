@@ -1,54 +1,22 @@
 <?php
 
-	/*
-	 *
-	 *	LiftKit MVC PHP Framework
-	 *
-	 *
-	 */
-
 
 	namespace LiftKit\Form\Element;
 
-	use LiftKit\Input\Input;
-	use LiftKit\Response\Response;
-	use LiftKit\Response\View;
+	use LiftKit\Request\Http as Request;
 
 
-	abstract class Element extends Response
+	abstract class Element
 	{
-		/**
-		 * @var View|null
-		 */
-		protected $view;
-
 		/**
 		 * @var array
 		 */
 		protected $attributes = array();
 
 
-		abstract public function submit (Input & $input);
-		abstract public function execute (Input & $input);
-		abstract public function validate (Input & $input);
-
-
-		public function prepare ()
-		{
-			if ($this->view) {
-				return $this->view->prepare();
-			} else {
-				return null;
-			}
-		}
-
-
-		public function setData ()
-		{
-			if ($this->view) {
-				$this->view->setData(func_get_args());
-			}
-		}
+		abstract public function submit (Request $input);
+		abstract public function execute (Request $input);
+		abstract public function validate (Request $input);
 
 
 		public function setAttribute ($attribute, $value)

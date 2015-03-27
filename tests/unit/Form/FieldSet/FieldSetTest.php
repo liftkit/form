@@ -5,7 +5,7 @@
 
 	use LiftKit\Form\FieldSet\FieldSet;
 	use LiftKit\Form\Field\Field;
-	use LiftKit\Input\Input;
+	use LiftKit\Request\Http as Request;
 
 	use PHPUNIT_Framework_TestCase;
 
@@ -80,7 +80,7 @@
 
 		public function testExecute ()
 		{
-            $input = new Input;
+            $input = new Request([]);
 
 			$element = $this->getMockBuilder('\LiftKit\Form\Field\Field')
                  ->setMethods(array('execute'))

@@ -1,11 +1,5 @@
 <?php
 
-	/*
-	 *
-	 *	LiftKit MVC PHP Framework
-	 *
-	 */
-
 	namespace LiftKit\Form\Validator;
 
 	use LiftKit\Form\Validator\RuleSet\RuleSet;

@@ -1,17 +1,9 @@
 <?php
 
-	/*
-	 *
-	 *	LiftKit MVC PHP Framework
-	 *
-	 */
-
 
 	namespace LiftKit\Form\Field;
 
-	use LiftKit\Response\View;
-
-	use LiftKit\Input\Input;
+	use LiftKit\Request\Http as Request;
 
 	use LiftKit\Form\Element\Element;
 	use LiftKit\Form\Validator\Validator;
@@ -40,19 +32,13 @@
 		protected $label;
 
 
-		public function __construct (View $view = null)
-		{
-			$this->view = $view;
-		}
-
-
-		public function submit (Input & $input)
+		public function submit (Request $input)
 		{
 			// no action
 		}
 
 
-		public function validate (Input & $input = null)
+		public function validate (Request $input = null)
 		{
 			if ($this->validator instanceof Validator) {
 				$this->validator->validate($this->value);
@@ -60,7 +46,7 @@
 		}
 
 
-		public function execute (Input & $input)
+		public function execute (Request $input)
 		{
 			$this->submit($input);
 			$this->validate($input);

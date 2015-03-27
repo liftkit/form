@@ -4,15 +4,10 @@
 	namespace LiftKit\Form\FieldSet;
 
 	use LiftKit\Response\View;
-	use LiftKit\Input\Input;
+	use LiftKit\Request\Http as Request;
 
 	use LiftKit\Form\Element\Element;
 	use LiftKit\Form\Field\Field;
-	use LiftKit\Form\Field\Select;
-	use LiftKit\Form\Field\MultiSelect;
-	use LiftKit\Form\Field\GroupedSelect;
-	use LiftKit\Form\Field\GroupedMultiSelect;
-	use LiftKit\Form\Field\AutoComplete;
 
 
 	class FieldSet extends Element
@@ -89,7 +84,7 @@
 		}
 
 
-		public function execute (Input & $input)
+		public function execute (Request $input)
 		{
 			$this->submit($input);
 			$this->validate($input);
@@ -100,13 +95,13 @@
 		}
 
 
-		public function submit (Input & $input)
+		public function submit (Request $input)
 		{
 			// no action
 		}
 
 
-		public function validate (Input & $input)
+		public function validate (Request $input)
 		{
 			// no action
 		}
