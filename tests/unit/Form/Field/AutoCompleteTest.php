@@ -2,7 +2,7 @@
 
 	namespace LiftKit\Tests\Unit\Form\Field;
 
-	use LiftKit\Form\Field\AutoComplete;
+	use LiftKit\Tests\Stub\Form\Field\AutoComplete;
 
 	use PHPUnit_Framework_TestCase;
 

@@ -29,48 +29,6 @@
 		}
 
 
-		public function createField (View $view = null)
-		{
-			return new Field($view);
-		}
-
-
-		public function createAutoCompleteField (View $view = null)
-		{
-			return new AutoComplete($view);
-		}
-
-
-		public function createSelectField (View $view = null)
-		{
-			return new Select($view);
-		}
-
-
-		public function createGroupedSelectField (View $view = null)
-		{
-			return new GroupedSelect($view);
-		}
-
-
-		public function createMultiSelectField (View $view = null)
-		{
-			return new MultiSelect($view);
-		}
-
-
-		public function createGroupedMultiSelectField (View $view = null)
-		{
-			return new GroupedMultiSelect($view);
-		}
-
-
-		public function createFieldSet (View $view = null)
-		{
-			return new Fieldset($view);
-		}
-
-
 		public function getElements ()
 		{
 			return $this->elements;

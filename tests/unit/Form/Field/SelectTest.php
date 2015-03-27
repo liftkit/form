@@ -2,7 +2,7 @@
 
 	namespace LiftKit\Tests\Unit\Form\Field;
 
-	use LiftKit\Form\Field\Select;
+	use LiftKit\Tests\Stub\Form\Field\Select;
 
 	use PHPUnit_Framework_TestCase;
 

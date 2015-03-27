@@ -2,7 +2,7 @@
 
 	namespace LiftKit\Tests\Unit\Form\Field;
 
-	use LiftKit\Form\Field\MultiSelect;
+	use LiftKit\Tests\Stub\Form\Field\MultiSelect;
 
 	use PHPUnit_Framework_TestCase;
 

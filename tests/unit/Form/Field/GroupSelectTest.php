@@ -2,7 +2,7 @@
 
 	namespace LiftKit\Tests\Unit\Form\Field;
 
-	use LiftKit\Form\Field\GroupedSelect;
+	use LiftKit\Tests\Stub\Form\Field\GroupedSelect;
 
 	use PHPUnit_Framework_TestCase;
 
