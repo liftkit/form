@@ -144,6 +144,20 @@
 		}
 
 
+		public function testEscapedRule ()
+		{
+			$validator = new Validator(
+				$this->ruleset,
+				'regex(' . Validator::escapeArgument('#^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$#') . ')',
+				'required field'
+			);
+
+			$value = 'jim@google.com';
+
+			$validator->validate($value);
+		}
+
+
 		protected function createRequiredRule ()
 		{
 			return new Rule(

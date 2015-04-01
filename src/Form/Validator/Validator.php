@@ -8,19 +8,19 @@
 
 	class Validator
 	{
-		const PERIOD_PLACEHOLDER          = '__.PLACEHOLDER_PERIOD.__';
-		const PIPE_PLACEHOLDER            = '__|PLACEHOLDER_PIPE|__';
-		const COMMA_PLACEHOLDER           = '__,PLACEHOLDER_COMMA,__';
-		const IN_PARENTHESIS_PLACEHOLDER  = '__(PLACEHOLDER_IN_PARENTHESIS(__';
-		const OUT_PARENTHESIS_PLACEHOLDER = '__)PLACEHOLDER_OUT_PARENTHESIS)__';
+		const BACKSLASH_PLACEHOLDER          = '__PLACEHOLDER_BACKSLASH__';
+		const PIPE_PLACEHOLDER            = '__PLACEHOLDER_PIPE__';
+		const COMMA_PLACEHOLDER           = '__PLACEHOLDER_COMMA__';
+		const IN_PARENTHESIS_PLACEHOLDER  = '__PLACEHOLDER_IN_PARENTHESIS__';
+		const OUT_PARENTHESIS_PLACEHOLDER = '__PLACEHOLDER_OUT_PARENTHESIS__';
 
-		const PERIOD_ESCAPED = '\\.';
+		const BACKSLASH_ESCAPED = '\\\\';
 		const PIPE_ESCAPED = '\\|';
 		const COMMA_ESCAPED = '\\,';
 		const IN_PARENTHESIS_ESCAPED = '\\(';
 		const OUT_PARENTHESIS_ESCAPED = '\\)';
 
-		const PERIOD = '.';
+		const BACKSLASH = '\\';
 		const PIPE = '|';
 		const COMMA = ',';
 		const IN_PARENTHESIS = '(';
@@ -34,12 +34,24 @@
 		/**
 		 * @var array
 		 */
-		protected $placeholders;
+		protected static $placeholders = array(
+			self::BACKSLASH_ESCAPED => self::BACKSLASH_PLACEHOLDER,
+			self::PIPE_ESCAPED => self::PIPE_PLACEHOLDER,
+			self::COMMA_ESCAPED => self::COMMA_PLACEHOLDER,
+			self::IN_PARENTHESIS_ESCAPED => self::IN_PARENTHESIS_PLACEHOLDER,
+			self::OUT_PARENTHESIS_ESCAPED => self::OUT_PARENTHESIS_PLACEHOLDER,
+		);
 
 		/**
 		 * @var array
 		 */
-		protected $replacements;
+		protected static $replacements = array(
+			self::BACKSLASH_PLACEHOLDER       => self::BACKSLASH,
+			self::PIPE_PLACEHOLDER            => self::PIPE,
+			self::COMMA_PLACEHOLDER           => self::COMMA,
+			self::IN_PARENTHESIS_PLACEHOLDER  => self::IN_PARENTHESIS,
+			self::OUT_PARENTHESIS_PLACEHOLDER => self::OUT_PARENTHESIS,
+		);
 
 		/**
 		 * @var string
@@ -57,8 +69,6 @@
 			$this->ruleSet = $ruleSet;
 			$this->fieldName = $fieldName;
 			$this->ruleString = $ruleString;
-
-			$this->setupPlaceholders();
 		}
 
 
@@ -94,23 +104,9 @@
 		}
 
 
-		protected function setupPlaceholders ()
+		public static function escapeArgument ($argument)
 		{
-			$this->placeholders = array(
-				self::PERIOD_ESCAPED => self::PERIOD_PLACEHOLDER,
-				self::PIPE_ESCAPED => self::PIPE_PLACEHOLDER,
-				self::COMMA_ESCAPED => self::COMMA_PLACEHOLDER,
-				self::IN_PARENTHESIS_ESCAPED => self::IN_PARENTHESIS_PLACEHOLDER,
-				self::OUT_PARENTHESIS_ESCAPED => self::OUT_PARENTHESIS_PLACEHOLDER,
-			);
-
-			$this->replacements = array(
-				self::PERIOD_PLACEHOLDER          => self::PERIOD,
-				self::PIPE_PLACEHOLDER            => self::PIPE,
-				self::COMMA_PLACEHOLDER           => self::COMMA,
-				self::IN_PARENTHESIS_PLACEHOLDER  => self::IN_PARENTHESIS,
-				self::OUT_PARENTHESIS_PLACEHOLDER => self::OUT_PARENTHESIS,
-			);
+			return addcslashes($argument, implode(self::$replacements));
 		}
 
 
@@ -132,14 +128,16 @@
 					$args   = array();
 				}
 
+				$newArgs = array();
+
 				foreach ($args as $arg) {
-					$args[] = $this->replacePlaceholders($arg);
+					$newArgs[] = $this->replacePlaceholders($arg);
 				}
 
 				if ($method) {
 					$parsedRules[] = array(
 						'name' => $method,
-						'arguments' => $args,
+						'arguments' => $newArgs,
 					);
 				}
 			}
@@ -150,7 +148,7 @@
 
 		protected function substitutePlaceholders ($string)
 		{
-			foreach ($this->placeholders as $placeholder => $replace) {
+			foreach (self::$placeholders as $placeholder => $replace) {
 				$string = str_replace($placeholder, $replace, $string);
 			}
 
@@ -160,7 +158,7 @@
 
 		protected function replacePlaceholders ($string)
 		{
-			foreach ($this->replacements as $placeholder => $replacement) {
+			foreach (self::$replacements as $placeholder => $replacement) {
 				$string = str_replace($placeholder, $replacement, $string);
 			}
 
