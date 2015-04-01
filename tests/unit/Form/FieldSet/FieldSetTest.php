@@ -5,6 +5,9 @@
 
 	use LiftKit\Form\FieldSet\FieldSet;
 	use LiftKit\Form\Field\Field;
+	use LiftKit\Form\Validator\RuleSet\RuleSet;
+	use LiftKit\Form\Validator\Rule\Rule;
+	use LiftKit\Form\Validator\Validator;
 	use LiftKit\Request\Http as Request;
 
 	use PHPUNIT_Framework_TestCase;
@@ -80,18 +83,48 @@
 
 		public function testExecute ()
 		{
-            $input = new Request([]);
+			$input = new Request([]);
 
 			$element = $this->getMockBuilder('\LiftKit\Form\Field\Field')
-                 ->setMethods(array('execute'))
-                 ->getMock();
+				->setMethods(array('execute'))
+				->getMock();
 
-            $element->expects($this->once())
-            	->method('execute')
-            	->with($this->identicalTo($input));
+			$element->expects($this->once())
+				->method('execute')
+				->with($this->identicalTo($input));
 
-            $this->fieldSet->attachElement($element);
+			$this->fieldSet->attachElement($element);
 
-            $this->fieldSet->execute($input);
+			$this->fieldSet->execute($input);
+		}
+
+
+		/**
+		 * @expectedException \LiftKit\Form\Validator\Rule\Exception\Validation
+		 */
+		public function testExecuteValidates ()
+		{
+			$input = new Request([]);
+			$ruleSet = new RuleSet;
+
+			$ruleSet->setRule('required', new Rule(
+				function ($value)
+				{
+					return (bool) $value;
+				},
+				'The field is required'
+			));
+
+			$element = new Field;
+			$element->setValidator(
+				new Validator(
+					$ruleSet,
+					'required'
+				)
+			);
+
+			$this->fieldSet->attachElement($element);
+
+			$this->fieldSet->execute($input);
 		}
 	}
