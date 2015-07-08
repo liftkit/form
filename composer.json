@@ -18,11 +18,11 @@
 		}
 	},
 	"require": {
-		"liftkit/input": "1.*",
+		"liftkit/input": "^1.0",
 		"liftkit/core": ">=0.2 <1.0",
-		"liftkit/dependency-injection": "1.*"
+		"liftkit/dependency-injection": "^1.0"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "4.5.*"
+		"phpunit/phpunit": "~4.5"
 	}
 }
