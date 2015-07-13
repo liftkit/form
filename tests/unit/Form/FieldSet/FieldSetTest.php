@@ -28,6 +28,15 @@
 		}
 
 
+		public function testAttachNull ()
+		{
+			$this->fieldSet->attachElement(null);
+			$count = count($this->fieldSet->getElements());
+
+			$this->assertEquals(0, $count);
+		}
+
+
 		public function testAddRemoveElement ()
 		{
 			$element = new Field;

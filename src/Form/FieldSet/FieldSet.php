@@ -44,15 +44,17 @@
 		}
 
 
-		public function attachElement (Element $element)
+		public function attachElement (Element $element = null)
 		{
-			if ($element instanceof Field) {
-				$name = $element->getName() ?: uniqid();
-			} else {
-				$name = uniqid();
-			}
+			if (! is_null($element)) {
+				if ($element instanceof Field) {
+					$name = $element->getName() ?: uniqid();
+				} else {
+					$name = uniqid();
+				}
 
-			$this->addElement($name, $element);
+				$this->addElement($name, $element);
+			}
 
 			return $this;
 		}
