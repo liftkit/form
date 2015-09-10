@@ -31,4 +31,10 @@
 		{
 			return call_user_func_array($this->groupExtractor, array($row));
 		}
+
+
+		public function isGrouped ()
+		{
+			return (bool) $this->groupExtractor;
+		}
 	}

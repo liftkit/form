@@ -23,6 +23,8 @@
 
 		public function testKeyGroup ()
 		{
+			$this->assertFalse($this->field->isGrouped());
+
 			$this->field->setOptionGroup('value');
 
 			$row = array(
@@ -34,11 +36,15 @@
 				$this->field->extractGroup($row),
 				'Value'
 			);
+
+			$this->assertTrue($this->field->isGrouped());
 		}
 
 
 		public function testCallbackGroup ()
 		{
+			$this->assertFalse($this->field->isGrouped());
+
 			$this->field->setOptionGroup(function ($row) {
 				return $row['value'];
 			});
@@ -52,5 +58,7 @@
 				$this->field->extractGroup($row),
 				'Value'
 			);
+
+			$this->assertTrue($this->field->isGrouped());
 		}
 	}
