@@ -3,7 +3,6 @@
 
 	namespace LiftKit\Form\FieldSet;
 
-	use LiftKit\Response\View;
 	use LiftKit\Request\Http as Request;
 
 	use LiftKit\Form\Element\Element;
@@ -16,12 +15,6 @@
 		 * @var Element[]
 		 */
 		protected $elements = array();
-
-
-		public function __construct (View $view = null)
-		{
-			$this->view = $view;
-		}
 
 
 		public function getElements ()
