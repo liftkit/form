@@ -119,7 +119,7 @@
 
 			foreach ($rules as $rule) {
 				if (strstr($rule, self::IN_PARENTHESIS)) {
-					$rule   = substr($rule, 0, count($rule) - 2);
+					$rule   = rtrim(trim($rule), self::OUT_PARENTHESIS);
 					$split  = explode(self::IN_PARENTHESIS, $rule);
 					$method = array_shift($split);
 					$args   = explode(self::COMMA, $split[0]);
@@ -136,7 +136,7 @@
 
 				if ($method) {
 					$parsedRules[] = array(
-						'name' => $method,
+						'name' => trim($method),
 						'arguments' => $newArgs,
 					);
 				}
